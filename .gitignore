@@ -1,0 +1,83 @@
+
+---
+
+### 🔥 2. **Corrigir o `.gitignore`**
+
+Abra o arquivo `.gitignore` e **substitua tudo** pelo conteúdo consolidado abaixo:
+
+```gitignore
+# Angular e Node
+/node_modules
+/dist
+/tmp
+/out-tsc
+/.angular/cache
+coverage
+*.lcov
+
+# IDEs e editores
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.history/*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache
+.parcel-cache
+.nuxt
+.vuepress/dist
+.temp
+.svelte-kit/
+.docusaurus
+.serverless/
+.fusebox/
+.dynamodb/
+.firebase/
+.tern-port
+
+# Dependências
+bower_components
+jspm_packages/
+web_modules/
+
+# Binários
+build/Release
+.lock-wscript
+
+# Arquivos extras
+*.tsbuildinfo
+.npm
+.eslintcache
+.stylelintcache
+.node_repl_history
+*.tgz
+.yarn-integrity
+
+# dotenv
+.env
+.env.*
+!.env.example
+
+# Ignorar vídeos grandes
+*.mp4
