@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<div class="tector-wrapper">
+  <h1 class="modelo-titulo">
+    <img src="assets/images/tector_logo.svg" alt="Tector" />
+  </h1>
+
+  <div class="modelo-container">
+    <button class="seta esquerda" (click)="imagemAnterior()">
+      <img src="assets/images/arrow-left.png" alt="Anterior" />
+    </button>
+    <img [src]="imagens[imagemAtual]" [alt]="'Imagem ' + (imagemAtual + 1)" class="modelo-imagem" />
+    <button class="seta direita" (click)="proximaImagem()">
+      <img src="assets/images/arrow-right.png" alt="Próxima" />
+    </button>
+  </div>
+  <div class="caracteristicas">
+    <div class="item" *ngFor="let item of caracteristicas; let i = index">
+      <strong>{{ i + 1 }}.</strong>
+      <span>{{ item }}</span>
+    </div>
+  </div>
+
+  <div class="tector-cards">
+    <div class="card">
+      <img src="assets/images/tectorC.png" alt="Tector 17-31t" />
+      <div class="info">
+        <h3>Tector 17-31t</h3>
+        <ul>
+          <li>Sensor de carga automática</li>
+          <li>ESC – Controle Eletrônico de Estabilidade</li>
+          <li>HSA – Assistente de Partida em Rampa</li>
+          <li>Cruise Control – Piloto Automático</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets/images/TectorC3.jpg" alt="Tector 9-15t" />
+      <div class="info">
+        <h3>Tector 9-15t</h3>
+        <ul>
+          <li>Sistema de injeção eletrônica Common Rail</li>
+          <li>Freio motor com acionamento no volante</li>
+          <li>TC – Controle de Tração</li>
+          <li>Ar-condicionado automático com controle de temperatura</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

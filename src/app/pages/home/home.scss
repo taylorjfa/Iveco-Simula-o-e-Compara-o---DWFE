@@ -1,8 +1,11 @@
 .video-container {
   position: relative;
+
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 
   video {
     width: 100%;
@@ -10,28 +13,31 @@
     object-fit: cover;
   }
 }
+
 .menu-button {
   position: absolute;
   top: 20px;
-  left: 20px;
+  right: 20px;
+  left: auto;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: white;
   font-weight: bold;
   font-size: 1.2rem;
   cursor: pointer;
   z-index: 10;
-
   .hamburger {
     font-size: 1.5rem;
   }
 
   .menu-text {
-    font-family: 'Arial Black', sans-serif; // simulação da Horizon
+    font-family: 'Arial Black', sans-serif;
     letter-spacing: 1px;
+    padding-right: 20px;
   }
 }
+
 .logo-iveco {
   position: absolute;
   top: 30px;
@@ -41,6 +47,7 @@
   height: auto;
   z-index: 5;
 }
+
 .sway-group {
   position: absolute;
   top: 50%;
@@ -48,7 +55,6 @@
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 5;
-
   .logo-sway {
     width: 500px;
     height: auto;
@@ -64,5 +70,432 @@
     font-family: 'Arial Black', sans-serif;
     white-space: nowrap;
     margin: 0;
+  }
+}
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+  z-index: 15;
+  img {
+    width: 60px;
+    height: auto;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.video-container.blur {
+  filter: blur(6px);
+
+  transition: filter 0.3s ease;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100vh;
+  background-color: #0b1a2b;
+  padding: 2rem 1.5rem;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+  z-index: 20;
+  transition: right 0.3s ease;
+  text-align: right;
+
+  a:first-child,
+  div:first-child {
+    display: block;
+    margin-bottom: 2rem;
+    text-align: right;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      margin: 1rem 0;
+      font-weight: bold;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+  }
+}
+.side-menu.aberto {
+  right: 0;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+  background: #fff;
+
+  .card {
+    width: 350px;
+    height: 350px;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: scale(1.05);
+      .arrow {
+        transform: scale(1.4);
+      }
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 1.5rem;
+      background-color: transparent;
+      background-repeat: no-repeat;
+
+      &#card-daily {
+        background-image: url('/assets/images/daily1.png');
+        background-size: 78%;
+      }
+
+      &#card-sway {
+        background-image: url('/assets/images/swayng.jpeg');
+        background-size: 78%;
+      }
+
+      &#card-tector {
+        background-image: url('/assets/images/TectorC3.jpg');
+        background-size: 90% auto;
+      }
+      .card-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: transparent;
+        padding: 1rem;
+        color: #111;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      .arrow {
+        transition: transform 0.3s ease;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.video-container.blur,
+.video-container.modal-blur {
+  filter: blur(10px);
+  transition: filter 0.3s ease-in-out;
+}
+
+.admin-modal {
+  background-color: #37a1c5;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  text-align: center;
+  border: 8px solid white;
+  font-family: 'Arial Black', sans-serif;
+}
+
+.admin-modal.cliente h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.2px;
+  margin-bottom: 0.7rem;
+}
+
+.admin-logo {
+  width: 120px;
+  margin-bottom: 1.5rem;
+}
+
+.admin-modal label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+  color: white;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.admin-modal input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #3186a3;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  outline: none;
+  margin-bottom: 1rem;
+}
+
+.admin-modal input.ng-invalid.ng-touched {
+  border: 2px solid #ff4b4b;
+}
+
+.error-message {
+  color: #ffeaea;
+  font-size: 0.8rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.login-button {
+  width: 60%;
+  padding: 0.8rem;
+  background-color: #29587a;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: #1e3e5c;
+  transform: scale(1.05);
+}
+
+.login-button:disabled {
+  background-color: #4c7a97;
+  cursor: not-allowed;
+}
+
+.cards-container.linha-inferior {
+  margin-top: -1rem;
+  justify-content: center;
+  background: #fff;
+  gap: 2rem;
+}
+
+.cards-container.linha-inferior .card.precificacao-card,
+.cards-container.linha-inferior .card.comparador-card {
+  position: relative;
+  width: 460px;
+  height: 280px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    .arrow {
+      transform: scale(1.4);
+    }
+  }
+
+  .card-especial-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 1rem;
+    gap: 1rem;
+    background: #fff;
+    img {
+      object-fit: contain;
+    }
+    .veiculo-esquerda,
+    .veiculo-direita {
+      height: 120px;
+      max-width: 100px;
+    }
+    .icone-centro {
+      height: 60px;
+      width: auto;
+    }
+  }
+
+  .card-content {
+    position: absolute;
+    bottom: 0.01rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #111;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    h3 {
+      margin: 0;
+    }
+    .arrow {
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+.concessionaria-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.concessionaria-content {
+  background-color: #000;
+  border-radius: 10px;
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  width: 95vw;
+  max-width: 1200px;
+  box-sizing: border-box;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+.mapa {
+  flex: 1 1 60%;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.busca {
+  flex: 1 1 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+
+  h3 {
+    font-family: 'Horizon', sans-serif;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-right: 0.5rem;
+    line-height: 1.2;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Horizon', sans-serif;
+    font-size: 0.95rem;
+    background-color: white;
+    color: #0066ff;
+    outline: none;
+    text-align: left;
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 50px;
+
+    &::placeholder {
+      color: #0066ff;
+      font-weight: 600;
+    }
+  }
+
+  .resultado {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 0.9rem;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 1rem;
+    min-height: 120px;
+    box-sizing: border-box;
+  }
+
+  .loja {
+    margin-bottom: 10px;
+    strong {
+      color: #000;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .concessionaria-content {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+  .busca {
+    width: 100%;
+  }
+  .mapa {
+    width: 100%;
   }
 }

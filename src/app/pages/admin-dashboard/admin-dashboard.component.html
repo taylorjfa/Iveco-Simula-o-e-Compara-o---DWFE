@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<div class="dashboard-wrapper">
+  <h2>DASHBOARD</h2>
+
+  <div class="dashboard-grid">
+    <div class="card c1 line-chart-card">
+      <h4 class="chart-title-top">TAXA DE CONVERSÃO</h4>
+
+      <div class="chart-canvas-wrapper" *ngIf="isBrowser">
+        <canvas baseChart [data]="areaChartData" [type]="'line'" [options]="areaChartOptions">
+        </canvas>
+      </div>
+    </div>
+    <div class="card c3 chart-container">
+      <div class="chart-canvas-wrapper" *ngIf="isBrowser">
+        <canvas
+          baseChart
+          [data]="doughnutChartData"
+          [type]="'doughnut'"
+          [options]="doughnutChartOptions"
+        >
+        </canvas>
+      </div>
+
+      <h4 class="chart-title">MELHOR DESEMPENHO DEALER</h4>
+    </div>
+    <div class="card c3">Card 3 (Tall)</div>
+    <div class="card c4 chart-container">
+      <div class="chart-canvas-wrapper" *ngIf="isBrowser">
+        <canvas baseChart [data]="barChartData" [type]="'bar'" [options]="barChartOptions">
+        </canvas>
+      </div>
+
+      <h4 class="chart-title">TICKET MÉDIO</h4>
+    </div>
+    <div class="card c5 chart-container">
+      <div class="chart-canvas-wrapper" *ngIf="isBrowser">
+        <canvas baseChart [data]="pieChartData" [type]="'pie'" [options]="pieChartOptions">
+        </canvas>
+      </div>
+
+      <h4 class="chart-title">FONTE ACESSOS</h4>
+    </div>
+    <div class="card c6 chart-container">
+      <div class="chart-canvas-wrapper" *ngIf="isBrowser">
+        <canvas baseChart [data]="radarChartData" [type]="'radar'" [options]="radarChartOptions">
+        </canvas>
+      </div>
+
+      <h4 class="chart-title">TOTAL DE VISITAS</h4>
+    </div>
+    <div class="card c7 chart-container">
+      <div class="chart-canvas-wrapper" *ngIf="isBrowser">
+        <canvas
+          baseChart
+          [data]="stackedBarChartData"
+          [type]="'bar'"
+          [options]="stackedBarChartOptions"
+        >
+        </canvas>
+      </div>
+
+      <h4 class="chart-title">REGIÕES COM MAIS VENDAS</h4>
+    </div>
+    <div class="card c8 line-chart-card">
+      <h4 class="chart-title-top">TOTAL DE VENDAS</h4>
+
+      <div class="chart-canvas-wrapper">
+        <canvas baseChart [data]="lineChartData" [type]="'line'" [options]="lineChartOptions">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

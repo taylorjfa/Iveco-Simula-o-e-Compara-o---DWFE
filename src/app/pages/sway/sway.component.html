@@ -1,0 +1,65 @@
+<app-header></app-header>
+
+<div class="sway-wrapper">
+  <h1 class="modelo-titulo">
+    <img src="assets/images/sway-logo.svg" alt="S-WAY" />
+  </h1>
+
+  <div class="modelo-container">
+    <button class="seta esquerda" (click)="imagemAnterior()">
+      <img src="assets/images/arrow-left.png" alt="Anterior" />
+    </button>
+    <img [src]="imagens[imagemAtual]" [alt]="'Imagem ' + (imagemAtual + 1)" class="modelo-imagem" />
+    <button class="seta direita" (click)="proximaImagem()">
+      <img src="assets/images/arrow-right.png" alt="Próxima" />
+    </button>
+  </div>
+
+  <div class="caracteristicas">
+    <div class="item" *ngFor="let item of caracteristicas; let i = index">
+      <strong>{{ i + 1 }}.</strong>
+      <span>{{ item }}</span>
+    </div>
+  </div>
+
+  <div class="sway-cards">
+    <div class="card">
+      <img src="assets/images/BRANCO-IVECO.webp" alt="S-WAY 4X2" />
+      <div class="info">
+        <h3>S-WAY 4X2</h3>
+        <ul>
+          <li>Sensor crepuscular e sensor de chuva</li>
+          <li>LDWS – Alerta de Mudança de Faixa</li>
+          <li>ACC – Controle de Cruzeiro Adaptativo</li>
+          <li>AEBS – Frenagem Autônoma de Emergência</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets/images/VERMELHO_FERRARA.webp" alt="S-WAY 6X2" />
+      <div class="info">
+        <h3>S-WAY 6X2</h3>
+        <ul>
+          <li>EBS – Sistema Eletrônico de Frenagem</li>
+          <li>HDC – Controle de Descida (Hill Descent Control)</li>
+          <li>ASR – Controle de Tração</li>
+          <li>Retarder Hidráulico – Sistema de Frenagem Auxiliar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets/images/sway3.webp" alt="S-WAY 6X4" />
+      <div class="info">
+        <h3>S-WAY 6X4</h3>
+        <ul>
+          <li>ESP – Controle Eletrônico de Estabilidade</li>
+          <li>TPMS – Monitoramento da Pressão dos Pneus</li>
+          <li>Hill Holder – Assistente de Partida em Rampa</li>
+          <li>Lane Keeping Assist – Assistente de Permanência em Faixa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

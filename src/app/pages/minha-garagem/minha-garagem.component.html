@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="garagem-wrapper">
+  <h2>SEUS VEÍCULOS FAVORITOS</h2>
+  <p>Nesta tela estão listados os modelos que chamaram sua atenção durante as simulações.</p>
+
+  <div class="card-veiculo" *ngFor="let veiculo of veiculosCurtidos">
+    <div class="imagem-wrapper">
+      <img [src]="veiculo.imagem" alt="Veículo" />
+    </div>
+
+    <div class="informacoes">
+      <img
+        [src]="veiculo.logo"
+        class="logo-modelo"
+        [ngClass]="'logo-' + veiculo.tipoVeiculo"
+        alt="Logo"
+      />
+      <p><strong>MODELO:</strong> {{ veiculo.modelo }}</p>
+      <p><strong>DISTÂNCIA ENTRE EIXOS:</strong> {{ veiculo.eixos }}</p>
+      <p><strong>COMPRIMENTO:</strong> {{ veiculo.comprimento }}</p>
+      <p><strong>POTÊNCIA:</strong> {{ veiculo.potencia }}</p>
+      <p><strong>TORQUE:</strong> {{ veiculo.torque }}</p>
+      <p><strong>TIPO DE CABINE:</strong> {{ veiculo.cabine }}</p>
+      <p *ngIf="veiculo.peso"><strong>PESO BRUTO TOTAL:</strong> {{ veiculo.peso }}</p>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

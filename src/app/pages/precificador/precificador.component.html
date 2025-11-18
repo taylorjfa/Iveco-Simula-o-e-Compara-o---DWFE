@@ -1,0 +1,100 @@
+<app-header></app-header>
+
+<div class="precificador-wrapper">
+  <h1>PRECIFICADOR</h1>
+  <p class="subtitulo">
+    SIMULE O VALOR ESTIMADO DO SEU VEÍCULO IVECO.<br />
+    PREENCHA OS DADOS DO CAMINHÃO E VEJA QUANTO ELE PODERIA VALER EM DIFERENTES CONCESSIONÁRIAS.
+  </p>
+
+  <form (ngSubmit)="calcularValor()" #form="ngForm" class="formulario-bloco">
+    <div class="coluna">
+      <div class="campo">
+        <label>MODELO</label>
+        <select [(ngModel)]="modelo" name="modelo" required (ngModelChange)="atualizarVersoes()">
+          <option value="" disabled>Selecione o Modelo</option>
+          <option value="Daily">Daily</option>
+          <option value="Sway">Sway</option>
+          <option value="Tector">Tector</option>
+        </select>
+      </div>
+      <div class="campo">
+        <div class="campo">
+          <label>VERSÃO</label>
+          <select [(ngModel)]="versao" name="versao" required>
+            <option value="" disabled>Selecione a Versão</option>
+            <option *ngFor="let v of versoesDisponiveis" [value]="v">{{ v }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="campo">
+        <label>QUILOMETRAGEM ATUAL</label>
+        <select [(ngModel)]="km" name="km" required>
+          <option value="" disabled>Selecione a Faixa de KM</option>
+          <option *ngFor="let faixa of faixasKm" [value]="faixa.min + '-' + faixa.max">
+            {{ faixa.label }}
+          </option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>PLACA (OPCIONAL)</label>
+        <input type="text" [(ngModel)]="placa" name="placa" />
+      </div>
+    </div>
+
+    <div class="coluna">
+      <div class="campo">
+        <label>ANO DO MODELO</label>
+        <input type="number" [(ngModel)]="anoModelo" name="anoModelo" required />
+      </div>
+      <div class="campo">
+        <label>REVISÕES EM DIA?</label>
+        <select [(ngModel)]="revisoes" name="revisoes" required>
+          <option value="sim">Sim</option>
+          <option value="nao">Não</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>TIPO DE COMBUSTÍVEL</label>
+        <select [(ngModel)]="combustivel" name="combustivel" required>
+          <option value="diesel">Diesel</option>
+          <option value="gasolina">Gasolina</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>CONDIÇÃO GERAL</label>
+        <select [(ngModel)]="condicao" name="condicao" required>
+          <option value="boa">Boa</option>
+          <option value="media">Média</option>
+          <option value="ruim">Ruim</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button type="submit" class="botao">ENVIAR DADOS</button>
+    </div>
+  </form>
+
+  <div class="valores-box" [class.visivel]="valoresCalculados">
+    <h2>VALORES ENCONTRADOS NAS<br />SEGUINTES CONCESSIONÁRIAS:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>CONCESSIONÁRIA:</th>
+          <th>VALOR:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of valoresConcessionarias">
+          <td>{{ c.nome }}</td>
+          <td>
+            <span class="valor">R$ {{ c.valor | number : '1.0-2' }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-footer></app-footer>

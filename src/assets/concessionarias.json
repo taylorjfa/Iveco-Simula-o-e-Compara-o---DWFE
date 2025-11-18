@@ -1,0 +1,62 @@
+[
+  {
+    "nome": "Iveco Torino - Betim (MG)",
+    "endereco": "Rod. Fernão Dias, BR-381, KM 495, Betim - MG",
+    "latitude": -19.9575,
+    "longitude": -44.1311
+  },
+  {
+    "nome": "Grupo Mercalf - São Paulo (SP)",
+    "endereco": "Av. Morvan Dias de Figueiredo, 5217 - São Paulo - SP",
+    "latitude": -23.5186,
+    "longitude": -46.5925
+  },
+  {
+    "nome": "Canaan - Rio de Janeiro (RJ)",
+    "endereco": "Av. Brasil, 4771 - São Cristóvão, Rio de Janeiro - RJ",
+    "latitude": -22.8988,
+    "longitude": -43.2384
+  },
+  {
+    "nome": "Metron - Curitiba (PR)",
+    "endereco": "Av. Paraná, 3600 - Bacacheri, Curitiba - PR",
+    "latitude": -25.3813,
+    "longitude": -49.2319
+  },
+  {
+    "nome": "Rota 101 - Recife (PE)",
+    "endereco": "Av. Engenheiro Abdias de Barros, 1000 - Jiquiá, Recife - PE",
+    "latitude": -8.0833,
+    "longitude": -34.9257
+  },
+  {
+    "nome": "Exxel - Porto Alegre (RS)",
+    "endereco": "Av. Sertório, 6780 - Sarandi, Porto Alegre - RS",
+    "latitude": -30.0076,
+    "longitude": -51.1396
+  },
+  {
+    "nome": "Iveco Matogrosso - Sinop (MT)",
+    "endereco": "Rod. BR-163, KM 827, Setor Industrial, Sinop - MT",
+    "latitude": -11.8900,
+    "longitude": -55.5188
+  },
+  {
+    "nome": "Javep - Ribeirão Preto (SP)",
+    "endereco": "Av. Maurílio Biagi, 2038 - Ribeirão Preto - SP",
+    "latitude": -21.2001,
+    "longitude": -47.8105
+  },
+  {
+    "nome": "Turin - Campinas (SP)",
+    "endereco": "Av. Papa João Paulo II, 1450 - Campinas - SP",
+    "latitude": -22.9099,
+    "longitude": -47.0626
+  },
+  {
+    "nome": "Via Sul - Salvador (BA)",
+    "endereco": "Av. Luís Viana, 50 - Paralela, Salvador - BA",
+    "latitude": -12.9351,
+    "longitude": -38.4116
+  }
+]

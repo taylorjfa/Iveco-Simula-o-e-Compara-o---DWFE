@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="daily-wrapper">
+  <h1 class="modelo-titulo">
+    <img src="assets/images/daily-logo.svg" alt="Daily" />
+  </h1>
+
+  <div class="modelo-container">
+    <button class="seta esquerda" (click)="imagemAnterior()">
+      <img src="assets/images/arrow-left.png" alt="Anterior" />
+    </button>
+
+    <img [src]="imagens[imagemAtual]" [alt]="'Imagem ' + (imagemAtual + 1)" class="modelo-imagem" />
+
+    <button class="seta direita" (click)="proximaImagem()">
+      <img src="assets/images/arrow-right.png" alt="Próxima" />
+    </button>
+  </div>
+
+  <div class="caracteristicas">
+    <div class="item" *ngFor="let item of caracteristicas; let i = index">
+      <strong>{{ i + 1 }}.</strong>
+      <span>{{ item }}</span>
+    </div>
+  </div>
+  <div class="daily-cards">
+    <div class="card">
+      <img src="assets/images/daily1.png" alt="EDAILY" />
+      <div class="info">
+        <h3>EDAILY</h3>
+        <ul>
+          <li>100% elétrica – Zero emissões e baixo ruído</li>
+          <li>Sensor crepuscular e sensor de chuva</li>
+          <li>LDWS – Alerta de Mudança de Faixa</li>
+          <li>ACC – Controle de Cruzeiro Adaptativo</li>
+          <li>AEBS – Frenagem Autônoma de Emergência</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets/images/Daily4.png" alt="Daily Cabine" />
+      <div class="info">
+        <h3>DAILY CABINE</h3>
+        <ul>
+          <li>Projetada para máxima versatilidade no transporte de cargas</li>
+          <li>Chassi reforçado com alta capacidade de personalização</li>
+          <li>Motor F1C de 3.0L – potência e torque ideais para aplicações severas</li>
+          <li>Câmbio HI-MATIC de 8 marchas – desempenho com conforto e eficiência</li>
+          <li>Tecnologia embarcada que garante segurança e produtividade no dia a dia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <img src="assets/images/Daily4E.png" alt="Daily Furgão" />
+      <div class="info">
+        <h3>DAILY FURGÃO</h3>
+        <ul>
+          <li>Ideal para entregas urbanas e longas distâncias</li>
+          <li>Motor F1C de alto desempenho e baixo consumo</li>
+          <li>Câmbio HI-MATIC de 8 marchas – trocas suaves e automáticas</li>
+          <li>Suspensão reforçada para máxima estabilidade</li>
+          <li>Cabine ergonômica com amplo espaço interno e conectividade avançada</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

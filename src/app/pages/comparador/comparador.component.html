@@ -1,0 +1,68 @@
+<app-header></app-header>
+
+<div class="comparador-wrapper">
+  <h1 class="titulo-principal">COMPARAR MODELOS</h1>
+  <p class="subtitulo">
+    COMPARE DIFERENTES MODELOS IVECO. SELECIONE OS VEÍCULOS DE SEU INTERESSE E VEJA LADO A LADO AS
+    PRINCIPAIS ESPECIFICAÇÕES DE CADA UM.
+  </p>
+  <div class="selecao-container">
+    <div class="dropdown-wrapper">
+      <label for="veiculo1-select">VEÍCULO 1</label>
+      <select
+        id="veiculo1-select"
+        [(ngModel)]="selectedVeiculo1"
+        (ngModelChange)="onVeiculo1Change($event)"
+      >
+        <option [ngValue]="null" disabled>Selecione um modelo</option>
+        <ng-container *ngFor="let grupo of dropdownOptions">
+          <optgroup [label]="grupo.label">
+            <option *ngFor="let opt of grupo.options" [value]="opt">{{ opt }}</option>
+          </optgroup>
+        </ng-container>
+      </select>
+    </div>
+
+    <div class="dropdown-wrapper">
+      <label for="veiculo2-select">VEÍCULO 2</label>
+      <select
+        id="veiculo2-select"
+        [(ngModel)]="selectedVeiculo2"
+        (ngModelChange)="onVeiculo2Change($event)"
+      >
+        <option [ngValue]="null" disabled>Selecione um modelo</option>
+        <ng-container *ngFor="let grupo of dropdownOptions">
+          <optgroup [label]="grupo.label">
+            <option *ngFor="let opt of grupo.options" [value]="opt">{{ opt }}</option>
+          </optgroup>
+        </ng-container>
+      </select>
+    </div>
+  </div>
+
+  <div class="comparacao-container" *ngIf="veiculo1 && veiculo2">
+    <div class="comparacao-header">
+      <div class="veiculo-col">
+        <h3 class="veiculo-nome">{{ veiculo1.nome }}</h3>
+        <img [src]="veiculo1.imagem" [alt]="veiculo1.nome" class="veiculo-img" />
+      </div>
+
+      <div class="veiculo-vs">
+        <span class="vs-texto">X</span>
+      </div>
+
+      <div class="veiculo-col">
+        <h3 class="veiculo-nome">{{ veiculo2.nome }}</h3>
+        <img [src]="veiculo2.imagem" [alt]="veiculo2.nome" class="veiculo-img" />
+      </div>
+    </div>
+    <div class="comparacao-body">
+      <div *ngFor="let row of specRows" class="spec-row">
+        <span class="spec-value-1">{{ veiculo1[row.key] }}</span>
+        <span class="spec-label">{{ row.label }}</span>
+        <span class="spec-value-2">{{ veiculo2[row.key] }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

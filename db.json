@@ -1,0 +1,42 @@
+{
+  "veiculosCurtidos": [
+    {
+      "id": 1,
+      "modelo": "6x2",
+      "eixos": "3.170 / 3.450 mm",
+      "comprimento": "6.848 / 7.156 mm",
+      "potencia": "480 cv @ 1.400 - 1.900 rpm",
+      "torque": "2.450 Nm",
+      "cabine": "3.457 / 3.897 mm",
+      "peso": "27.200 kg",
+      "imagem": "assets/images/sway1.webp",
+      "logo": "assets/images/sway-logo.svg",
+      "tipoVeiculo": "sway"
+    },
+    {
+      "id": 2,
+      "modelo": "6x2",
+      "eixos": "3.540 mm",
+      "comprimento": "7.156 mm",
+      "potencia": "540 cv @ 1.500 - 1.900 rpm",
+      "torque": "2.550 Nm",
+      "cabine": "3.434 / 3.900 mm",
+      "peso": "28.200 kg",
+      "imagem": "assets/images/swayCarrossel1.webp",
+      "logo": "assets/images/sway-logo.svg",
+      "tipoVeiculo": "sway"
+    },
+    {
+      "id": 3,
+      "modelo": "30 - 160",
+      "eixos": "3.520 mm",
+      "comprimento": "5.153 / 6.072 mm",
+      "potencia": "160 cv",
+      "torque": "380 Nm @ 1.600 a 2.900 rpm",
+      "cabine": "H2 - 2.779",
+      "imagem": "assets/images/daily1.png",
+      "logo": "assets/images/daily-logo.svg",
+      "tipoVeiculo": "daily"
+    }
+  ]
+}

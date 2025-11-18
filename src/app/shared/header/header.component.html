@@ -1,0 +1,15 @@
+<div class="dashboard-wrapper" (click)="fecharMenu()">
+  <header class="dashboard-header">
+    <img src="images/logo-iveco.svg" alt="Logo Iveco" class="header-logo" />
+    <div class="header-menu-button" (click)="abrirMenu($event)">
+      <span class="menu-text">MENU</span>
+      <span class="hamburger">☰</span>
+    </div>
+  </header>
+  <div class="side-menu" [class.aberto]="menuAberto" (click)="$event.stopPropagation()">
+    <ul>
+      <li (click)="voltarParaHome()">VOLTAR PARA A HOME</li>
+    </ul>
+  </div>
+  <div class="dashboard-content" [class.blur]="menuAberto"></div>
+</div>

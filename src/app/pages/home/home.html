@@ -1,16 +1,180 @@
-<!-- src/app/pages/home/home.html -->
-<div class="video-container">
-  <div class="menu-button">
+<div class="home-wrapper" (click)="fecharMenu()">
+  <div class="menu-button" (click)="abrirMenu($event)">
     <span class="hamburger">☰</span>
+
     <span class="menu-text">MENU</span>
   </div>
-  <img class="logo-iveco" src="images/logo-iveco.svg" alt="Logo Iveco" />
-  <div class="sway-group">
-  <img class="logo-sway" src="images/logo-sway.svg" alt="Logo S-WAY" />
-  <h1 class="slogan-text">ESTÁ NA HORA DE CRIAR NOVOS CAMINHOS</h1>
+
+  <div class="side-menu" [class.aberto]="menuAberto" (click)="$event.stopPropagation()">
+    <ul>
+      <li (click)="abrirModalCliente($event)">MINHA GARAGEM (ÁREA CLIENTE)</li>
+
+      <li (click)="abrirModalAdmin($event)">LOGIN ADMINISTRADOR</li>
+
+      <li (click)="abrirConcessionaria()">CONCESSIONÁRIAS</li>
+    </ul>
   </div>
-  <video autoplay muted loop playsinline>
-    <source src="assets/videos/intro.mp4" type="video/mp4" />
-    Seu navegador não suporta vídeos em HTML5.
-  </video>
+
+  <div class="video-container" [class.blur]="menuAberto">
+    <img class="logo-iveco" src="images/logo-iveco.svg" alt="Logo Iveco" />
+
+    <div class="sway-group">
+      <img class="logo-sway" src="images/logo-sway.svg" alt="Logo S-WAY" />
+
+      <h1 class="slogan-text">ESTÁ NA HORA DE CRIAR NOVOS CAMINHOS</h1>
+    </div>
+
+    <div class="scroll-arrow" (click)="scrollToContent()">
+      <img src="images/seta-animada.png" alt="Seta para baixo" />
+    </div>
+
+    <video autoplay muted loop playsinline>
+      <source src="assets/videos/intro.mp4" type="video/mp4" />
+
+      Seu navegador não suporta vídeos em HTML5.
+    </video>
+  </div>
 </div>
+
+<div class="admin-modal-overlay" *ngIf="mostrarModalAdmin" (click)="fecharModalAdmin()">
+  <div class="admin-modal" (click)="$event.stopPropagation()">
+    <img src="images/logo-iveco.svg" alt="Logo Iveco" class="admin-logo" />
+
+    <label for="email">INSIRA O EMAIL DE ADMINISTRADOR</label>
+
+    <input id="email" type="email" [(ngModel)]="emailAdmin" />
+
+    <label for="senha">INSIRA A SENHA DE ADMINISTRADOR</label>
+
+    <input id="senha" type="password" [(ngModel)]="senhaAdmin" />
+
+    <button class="login-button" (click)="loginAdmin()">ENTRAR</button>
+  </div>
+</div>
+
+<div class="admin-modal-overlay" *ngIf="mostrarModalCliente" (click)="fecharModalCliente()">
+  <div class="admin-modal cliente" (click)="$event.stopPropagation()">
+    <img src="images/logo-iveco.svg" alt="Logo Iveco" class="admin-logo" />
+
+    <h2>MINHA GARAGEM</h2>
+
+    <form (ngSubmit)="loginCliente()" #formCliente="ngForm" novalidate>
+      <label for="emailCliente">INSIRA O EMAIL DE CLIENTE</label>
+
+      <input
+        id="emailCliente"
+        type="email"
+        name="emailCliente"
+        required
+        [(ngModel)]="emailCliente"
+        #emailClienteCtrl="ngModel"
+      />
+
+      <div *ngIf="emailClienteCtrl.invalid && emailClienteCtrl.touched" class="error-message">
+        Digite um e-mail válido.
+      </div>
+
+      <label for="senhaCliente">INSIRA A SENHA DE CLIENTE</label>
+
+      <input
+        id="senhaCliente"
+        type="password"
+        name="senhaCliente"
+        required
+        [(ngModel)]="senhaCliente"
+        #senhaClienteCtrl="ngModel"
+      />
+
+      <div *ngIf="senhaClienteCtrl.invalid && senhaClienteCtrl.touched" class="error-message">
+        A senha é obrigatória.
+      </div>
+
+      <button class="login-button" type="submit" [disabled]="formCliente.invalid">ENTRAR</button>
+    </form>
+  </div>
+</div>
+
+<div class="concessionaria-modal" *ngIf="mostrarConcessionarias" (click)="fecharConcessionaria()">
+  <div class="concessionaria-content" (click)="$event.stopPropagation()">
+    <div class="mapa">
+      <img src="assets/images/mapa-mundi.png" alt="Mapa" />
+    </div>
+
+    <div class="busca">
+      <h3>LOCALIZE NOSSOS<br />CONCESSIONÁRIOS</h3>
+
+      <input
+        type="text"
+        placeholder="Digite um CEP"
+        [(ngModel)]="cep"
+        (keydown.enter)="buscarConcessionarias()"
+      />
+
+      <div class="resultado" *ngIf="lojasProximas.length > 0">
+        <div *ngFor="let loja of lojasProximas" class="loja">
+          <strong>{{ loja.nome }}</strong
+          ><br />
+
+          {{ loja.endereco }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="conteudo-abaixo">
+  <h2>Conteúdo abaixo do vídeo</h2>
+</div>
+
+<div id="cards-veiculos" class="cards-container">
+  <div class="card" (click)="navegarPara('daily')">
+    <div class="card-image" id="card-daily">
+      <div class="card-content">
+        <h3>Daily</h3>
+        <div class="arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" (click)="navegarPara('s-way')">
+    <div class="card-image" id="card-sway">
+      <div class="card-content">
+        <h3>S-way</h3>
+        <div class="arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" (click)="navegarPara('tector')">
+    <div class="card-image" id="card-tector">
+      <div class="card-content">
+        <h3>Tector</h3>
+        <div class="arrow">→</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cards-container linha-inferior">
+  <div class="card precificacao-card" (click)="navegarPara('precificador')">
+    <div class="card-image" style="background-image: url('assets/images/Precificador.png')">
+      <div class="card-content">
+        <span>Precificador</span>
+
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card comparador-card" (click)="navegarPara('comparador')">
+    <div class="card-image" style="background-image: url('assets/images/Comparador.png')">
+      <div class="card-content">
+        <span>Comparador</span>
+
+        <span class="arrow">→</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
